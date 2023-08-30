@@ -1,0 +1,12 @@
+PORT = 5000
+DB_HOST_DEV = localhost
+DB_HOST_PROD = cursotesting.com.ar
+
+DB_USER_DEV =root
+DB_USER_PROD=testing3
+
+DB_PASS_DEV= ""
+DB_PASS_PROD=institutoweb
+
+DB_NAME_DEV=concesionaria
+DB_NAME_PROD=concesionariagrupocuatro
