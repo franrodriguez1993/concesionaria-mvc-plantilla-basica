@@ -13,6 +13,9 @@ async function altaProveedorController(req, res) {
     //retorno:
     res.status(201).json({ id_proveedor: resService[0] });
   } catch (error) {
+    if (error.message.startsWith("Error 400")) {
+      return res.status(400).json({ msg: error.message });
+    }
     return res.status(500).json({ msg: error.message });
   }
 }

@@ -33,6 +33,18 @@ class UsuarioModel {
     }
   }
 
+  /**  OBTENER UNO POR EMAIL  **/
+  async getByEmail(email) {
+    try {
+      return await this.knexDB
+        .from(this.tableName)
+        .select("*")
+        .where({ email: email });
+    } catch (error) {
+      throw error;
+    }
+  }
+
   /**  GUARDAR UN REGISTRO  **/
 
   async save(obj) {

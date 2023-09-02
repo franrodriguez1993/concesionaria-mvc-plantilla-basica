@@ -11,6 +11,9 @@ async function altaVehiculoController(req, res) {
     //respuesta:
     res.json({ id_vehiculo: resService[0] });
   } catch (error) {
+    if (error.message.startsWith("Error 400")) {
+      return res.status(400).json({ msg: error.message });
+    }
     res.status(400).json({ msg: error.message });
   }
 }
