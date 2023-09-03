@@ -8,7 +8,13 @@ async function altaProveedorController(req, res) {
     const data = req.body;
 
     //servicio:
-    const resService = await altaProveedoresService(data);
+    const resService = await altaProveedoresService({
+      nombre: data.name,
+      apellido: data.lastname,
+      email: data.email,
+      clave: data.key,
+      rubro: data.item,
+    });
 
     //retorno:
     res.status(201).json({ id_proveedor: resService[0] });

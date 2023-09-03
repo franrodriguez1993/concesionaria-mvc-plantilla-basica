@@ -12,8 +12,8 @@ async function altaProveedoresService(data) {
     preveedoresValidations(data);
 
     //chequear email en la db:
-    const checkEmail = await usuarioModel.getByEmail(data.mail);
-    if (checkEmail.length !== 0) throw new Error("Error 400 - Mail en uso.");
+    const checkEmail = await usuarioModel.getByEmail(data.email);
+    if (checkEmail.length !== 0) throw new Error("Error 400 - Email en uso.");
 
     //encriptar contraseña:
     const hashPass = await passwordEncrypt(data.clave);
