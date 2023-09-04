@@ -12,7 +12,7 @@ async function altaProveedoresService(data) {
     preveedoresValidations(data);
 
     //chequear email en la db:
-    const checkEmail = await usuarioModel.getByEmail(data.mail);
+    const checkEmail = await usuarioModel.getByEmail(data.email);
     if (checkEmail.length !== 0) throw new Error("Error 400 - Email en uso.");
 
     //encriptar contraseña:
@@ -22,7 +22,7 @@ async function altaProveedoresService(data) {
     const usuario = await usuarioModel.save({
       nombre: data.nombre,
       apellido: data.apellido,
-      email: data.mail,
+      email: data.email,
       clave: hashPass,
       rol: "proveedor",
     });
