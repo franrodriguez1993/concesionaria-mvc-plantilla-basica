@@ -1,4 +1,5 @@
 const { vehiculoModel } = require("../models/vehiculo.model");
+const { clienteModel } = require("../models/cliente.model");
 const { vehiculosValidations } = require("../validations/vehiculosValidations");
 
 async function altaVehiculoService(data) {
@@ -6,8 +7,10 @@ async function altaVehiculoService(data) {
     //Validación de campos:
     vehiculosValidations(data);
 
-    //falta validación de usuario registrado en la ddbb
-    // ( --- AQUI VALIDACIÓN DE USUARIO REGISTRADO EN LA DDBB ---)
+    //validar usuario:
+    const cliente = await clienteModel.getById(data.cliente);
+    if (cliente.length === 0)
+      throw new Error("Error 404: Cliente no encontrado");
 
     const fecha_ingreso = new Date();
 
