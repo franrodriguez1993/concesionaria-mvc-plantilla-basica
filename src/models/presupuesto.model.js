@@ -27,7 +27,7 @@ class PresupuestoModel {
       return await this.knexDB
         .from(this.tableName)
         .select("*")
-        .where({ id: id });
+        .where({ id_presupuesto: id });
     } catch (error) {
       throw error;
     }
@@ -49,7 +49,7 @@ class PresupuestoModel {
     try {
       return await this.knexDB
         .from(this.tableName)
-        .where({ id: id })
+        .where({ id_presupuesto: id })
         .update(obj);
     } catch (error) {
       throw error;
@@ -60,7 +60,10 @@ class PresupuestoModel {
 
   async delete(id) {
     try {
-      return await this.knexDB.from(this.tableName).where({ id: id }).del();
+      return await this.knexDB
+        .from(this.tableName)
+        .where({ id_presupuesto: id })
+        .del();
     } catch (error) {
       throw error;
     }

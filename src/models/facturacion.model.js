@@ -27,7 +27,7 @@ class FacturacionModel {
       return await this.knexDB
         .from(this.tableName)
         .select("*")
-        .where({ id: id });
+        .where({ id_facturacion: id });
     } catch (error) {
       throw error;
     }
@@ -49,7 +49,7 @@ class FacturacionModel {
     try {
       return await this.knexDB
         .from(this.tableName)
-        .where({ id: id })
+        .where({ id_facturacion: id })
         .update(obj);
     } catch (error) {
       throw error;
@@ -60,7 +60,10 @@ class FacturacionModel {
 
   async delete(id) {
     try {
-      return await this.knexDB.from(this.tableName).where({ id: id }).del();
+      return await this.knexDB
+        .from(this.tableName)
+        .where({ id_facturacion: id })
+        .del();
     } catch (error) {
       throw error;
     }

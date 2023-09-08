@@ -27,7 +27,7 @@ class UsuarioModel {
       return await this.knexDB
         .from(this.tableName)
         .select("*")
-        .where({ id: id });
+        .where({ id_usuario: id });
     } catch (error) {
       throw error;
     }
@@ -61,7 +61,7 @@ class UsuarioModel {
     try {
       return await this.knexDB
         .from(this.tableName)
-        .where({ id: id })
+        .where({ id_usuario: id })
         .update(obj);
     } catch (error) {
       throw error;
@@ -72,7 +72,10 @@ class UsuarioModel {
 
   async delete(id) {
     try {
-      return await this.knexDB.from(this.tableName).where({ id: id }).del();
+      return await this.knexDB
+        .from(this.tableName)
+        .where({ id_usuario: id })
+        .del();
     } catch (error) {
       throw error;
     }

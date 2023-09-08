@@ -27,7 +27,7 @@ class ProveedorModel {
       return await this.knexDB
         .from(this.tableName)
         .select("*")
-        .where({ id: id });
+        .where({ id_proveedor: id });
     } catch (error) {
       throw error;
     }
@@ -49,7 +49,7 @@ class ProveedorModel {
     try {
       return await this.knexDB
         .from(this.tableName)
-        .where({ id: id })
+        .where({ id_proveedor: id })
         .update(obj);
     } catch (error) {
       throw error;
@@ -60,7 +60,10 @@ class ProveedorModel {
 
   async delete(id) {
     try {
-      return await this.knexDB.from(this.tableName).where({ id: id }).del();
+      return await this.knexDB
+        .from(this.tableName)
+        .where({ id_proveedor: id })
+        .del();
     } catch (error) {
       throw error;
     }

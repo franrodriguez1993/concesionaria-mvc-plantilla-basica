@@ -27,7 +27,7 @@ class EmpleadoModel {
       return await this.knexDB
         .from(this.tableName)
         .select("*")
-        .where({ id: id });
+        .where({ id_empleado: id });
     } catch (error) {
       throw error;
     }
@@ -49,7 +49,7 @@ class EmpleadoModel {
     try {
       return await this.knexDB
         .from(this.tableName)
-        .where({ id: id })
+        .where({ id_empleado: id })
         .update(obj);
     } catch (error) {
       throw error;
@@ -60,7 +60,10 @@ class EmpleadoModel {
 
   async delete(id) {
     try {
-      return await this.knexDB.from(this.tableName).where({ id: id }).del();
+      return await this.knexDB
+        .from(this.tableName)
+        .where({ id_empleado: id })
+        .del();
     } catch (error) {
       throw error;
     }
