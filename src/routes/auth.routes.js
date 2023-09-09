@@ -1,4 +1,7 @@
-const { Router } = require("express");
-const route = Router();
+const express = require("express");
+const router = express.Router();
+const jwtAdmin = require("../utils/jwt");
 
-route.post("/login");
+router.post("/login", jwtAdmin.create_token);
+
+module.exports = router;
