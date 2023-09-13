@@ -18,6 +18,7 @@ async function create_token(req, res) {
     const token = jwt.sign(payload, secret, { expiresIn: "10min" });
     res.json({
       message: "AUTENTICACION EXITOSA",
+      id: user[0].id_usuario,
       token: token,
     });
   } else {
