@@ -14,7 +14,7 @@ class RepuestoModel {
       return await this.knexDB
         .from(this.tableName)
         .select("*")
-        .orderBy("id", "asc");
+        .orderBy("id_repuesto", "asc");
     } catch (error) {
       throw error;
     }

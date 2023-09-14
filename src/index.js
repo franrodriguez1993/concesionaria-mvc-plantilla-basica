@@ -3,6 +3,8 @@ const express = require("express");
 const { vehiculoRoute } = require("./routes/vehiculo.routes");
 const { proveedorRoutes } = require("./routes/proveedor.routes");
 const { mensajeRoutes } = require("./routes/mensaje.routes");
+const { repuestoRouter } = require("./routes/repuesto.routes");
+
 const authRoutes = require("./routes/auth.routes");
 
 const app = express();
@@ -15,6 +17,7 @@ app.use("/vehiculo", vehiculoRoute);
 app.use("/proveedor", proveedorRoutes);
 app.use("/auth", authRoutes);
 app.use("/mensaje", mensajeRoutes);
+app.use("/repuesto", repuestoRouter);
 
 app.listen(PORT, () => {
   console.log(`Server running on PORT: ${PORT}`);
