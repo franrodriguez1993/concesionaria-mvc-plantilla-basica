@@ -1,4 +1,4 @@
-# ALTA REPUESTOS
+# LISTAR REPUESTOS
 
 Verbo HTTP: GET
 url : https://concesionariafranco.onrender.com/repuesto
