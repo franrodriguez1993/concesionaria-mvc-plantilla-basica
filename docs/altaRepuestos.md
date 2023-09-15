@@ -5,7 +5,7 @@ url : https://concesionariafranco.onrender.com/repuesto
 
 Body de la petición:
 
-- “name”: nombre del repuesto (3 - 50 caracteres)
+- “nombre”: nombre del repuesto (3 - 50 caracteres)
 - "precio": precio del respuesto (valor de 1 - 1000000)
 - "stock": cantidad de respuestos (valor de 1 - 10000)
 - "id_proveedor": número id válido de un proveedor almacenado en la base de datos.
