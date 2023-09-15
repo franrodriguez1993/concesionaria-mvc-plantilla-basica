@@ -9,7 +9,7 @@ async function altaClienteService(data) {
     const password = await passwordEncrypt(data.clave);
     const checkEmail = await usuarioModel.getByEmail(data.mail);
     if (checkEmail.length != 0) {
-      throw Error("Email en uso");
+      throw Error("Error 400: Email en uso");
     }
     const idUsuario = await usuarioModel.save({
       nombre: data.nombre,
