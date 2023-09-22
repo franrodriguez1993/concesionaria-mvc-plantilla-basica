@@ -9,6 +9,16 @@ async function userEmail(email) {
   }
 }
 
+async function userById(id) {
+  try {
+    const usuario = await usuarioModel.getById(id);
+    return usuario;
+  } catch (error) {
+    throw error;
+  }
+}
+
 module.exports = {
   userEmail,
+  userById,
 };

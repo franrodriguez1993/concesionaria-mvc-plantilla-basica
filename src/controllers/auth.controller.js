@@ -9,6 +9,16 @@ async function userAuthEmail(email) {
   }
 }
 
+async function userAuthId(id) {
+  try {
+    const user = await authServices.userById(id);
+    return user;
+  } catch (error) {
+    throw error;
+  }
+}
+
 module.exports = {
   userAuthEmail,
+  userAuthId,
 };

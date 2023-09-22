@@ -14,7 +14,7 @@ async function create_token(req, res) {
     user[0] != undefined &&
     bcrypt.compareSync(pass, user[0].clave) === true
   ) {
-    const payload = { sub: user[0].id_usuario };
+    const payload = { id: user[0].id_usuario };
     const token = jwt.sign(payload, secret, { expiresIn: "10min" });
     res.json({
       message: "AUTENTICACION EXITOSA",
@@ -29,9 +29,9 @@ async function create_token(req, res) {
 }
 
 const verifyToken = (req, res, next) => {
-  let bearerHeader = req.headers["authorization"];
+  let bearerHeader = req.headers?.authorization;
 
-  if (typeof bearerHeader != undefined) {
+  if (bearerHeader != undefined) {
     let token = bearerHeader.split(" ")[1];
     req.token = token;
   } else {
@@ -41,16 +41,16 @@ const verifyToken = (req, res, next) => {
     return;
   }
 
-  jwt.verify(req.token, secret, (error, decoded) => {
+  jwt.verify(req.token, secret, async (error, decoded) => {
     if (error) {
-      return res.json({
+      return res.status(401).json({
         message: "El token no es valido",
       });
     } else {
+      let dataToken = jwt.verify(req.token, secret);
+      const user = await authController.userAuthId(dataToken.id);
+      req.user = user;
       req.decoded = decoded;
-      res.json({
-        message: "Usuario autorizado",
-      });
       next();
     }
   });

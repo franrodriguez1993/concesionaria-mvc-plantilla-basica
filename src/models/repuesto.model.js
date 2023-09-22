@@ -33,6 +33,19 @@ class RepuestoModel {
     }
   }
 
+  /**  OBTENER POR TIPO DE REPUESTO  **/
+
+  async getByType(type) {
+    try {
+      return await this.knexDB
+        .from(this.tableName)
+        .select("*")
+        .where({ tipo_repuesto: type });
+    } catch (error) {
+      throw error;
+    }
+  }
+
   /**  GUARDAR UN REGISTRO  **/
 
   async save(obj) {

@@ -1,7 +1,14 @@
 const { repuestoModel } = require("../../models/repuesto.model");
 
-async function listarRepuestosService() {
-  return await repuestoModel.listAll();
+async function listarRepuestos(tipo) {
+  try {
+    const listadoRepuestos = await repuestoModel.getByType(tipo);
+    return listadoRepuestos;
+  } catch (error) {
+    throw error;
+  }
 }
 
-module.exports = { listarRepuestosService };
+module.exports = {
+  listarRepuestos,
+};

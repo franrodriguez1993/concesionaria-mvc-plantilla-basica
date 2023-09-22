@@ -3,12 +3,19 @@ const {
   altaRepuestoController,
 } = require("../controllers/repuestos/altaRepuesto.controller");
 const {
-  listarRepuestoController,
+  listarRepuestosController,
 } = require("../controllers/repuestos/listarRepuesto.controller");
+const { checkRole } = require("../middlewares/user.validation");
+const jwtAdmin = require("../utils/jwt");
 
 const repuestoRouter = Router();
 
 repuestoRouter.post("/", altaRepuestoController);
-repuestoRouter.get("/", listarRepuestoController);
+repuestoRouter.get(
+  "/:tipo",
+  jwtAdmin.verifyToken,
+  checkRole(["empleado"]),
+  listarRepuestosController
+);
 
 module.exports = { repuestoRouter };
